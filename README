@@ -1,0 +1,40 @@
+ DESCIPTION OF OUR APPROACH
+============================
+
+This project was divided into two main tasks.
+    -> Implementation of HTTP :  	
+	- client socket implementation
+	- construction of HTTP GET headers
+	- extraction of csrftoken and sessiontoken
+	- construction of HTTP POST headers
+	- handling error codes/ checks for socket close by server
+	
+    -> Implementation of crawler
+	- parsed and created a global list of all links for fakebook profiles
+	- avoided visiting same links more than once and thereby prevented loops
+	- used BeautifulSoup library to extract secret flags while parsing each of the
+	  links from the global list
+	- the links were added to the global list using the Breadth First Search method
+
+ CHALLENGES FACED 
+===================
+
+1. Understanding the sequence of HTTP headers would require us to connect to university intranet. 
+   Since SSH port forwarding didn't help much, we had to go to university to gather as much data 
+   using Fiddler as we could before we head back home.
+
+2. Lots of precision required in construction of HTTP GET and POST headers. Lots of trial and error methods
+   adopted to construct HTTP headers. Took time to create proper POST request and obtain actual sessionid
+
+3. Unexpected socket connection close from server. Initially, we hadn't handled this particular scenario. 
+   But, we created socket again, reconnected, which worked just fine. Took quite a bit time to figure this out.
+
+4. Had to manage the global list well enough so that loops were avoided
+    
+ TESTING 
+=========
+
+1. Running the webcrawler.py in batch. Expected results were obtained
+2. Error handling with manually setup server socket (non http) which sends headers with different types 
+   of error code 
+
